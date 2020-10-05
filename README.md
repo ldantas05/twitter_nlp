@@ -5,7 +5,7 @@ Captures tweets from governors of all the US states and shows sentiment towards 
 pip install pandas plotly char_studio numpy matplotlib tkcalendar requests TwitterAPI
 
 # required licences
-need google cloud sdk key as well as twitter API premium sandbox bearer key and app environment name
+need google cloud sdk key called key in the main folder as well as twitter API premium sandbox bearer key and app environment name
 
 For the program to work replace credentials_template.py data with required keys and rename to credentials.py
 
