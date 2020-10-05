@@ -1,4 +1,4 @@
-#author Nelson Lenonardo Gonzalez Dantas Copyright 2020
+#author Nelson Lenonardo Gonzalez Dantas Copyright 2020data
 import twapi as tw
 import nlpmain as gg
 import pandas as pd
@@ -52,7 +52,7 @@ def get_tweets(govs, datein, dateout):
 	plot_scatter(metrics)
 
 def get_govs(datein, dateout, state = ""):
-	govs_username = pd.read_csv("data_folder/governors.csv")
+	govs_username = pd.read_csv("governors.csv")
 	get_tweets(govs_username, datein, dateout)
 
 
