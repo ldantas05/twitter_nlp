@@ -1,4 +1,4 @@
-#author Nelson Lenonardo Gonzalez Dantas Copyright 2020data
+#author Nelson Lenonardo Gonzalez Dantas Copyright 2020
 import twapi as tw
 import nlpmain as gg
 import pandas as pd
@@ -13,18 +13,23 @@ from tkcalendar import Calendar, DateEntry
 from datetime import datetime
 from datetime import date
 from tkinter import messagebox
+import time
 
 
 
 #Getting governors names and tweets and sentiment
 
+def plot_from_test():
+	df = pd.read_excel(r"data_folder/test_tweets.xlsx", header=0)
+	plot_in_map(df)
+	plot_scatter(df)
 
 def plot_in_map(metrics):
 	avgs_total_time = metrics.groupby(['State Abb'], as_index=False).mean()
 	data_map = dict(type='choropleth',
 	locations = avgs_total_time['State Abb'],
 	locationmode = 'USA-states',
-	colorscale = 'Reds',
+	colorscale="Magma",
 	text = avgs_total_time['State Abb'],
 	z = avgs_total_time['Sentiment Score'],
 	colorbar = {'title':"Sentiment Analysis"})
@@ -46,13 +51,27 @@ def plot_scatter(metrics):
 def get_tweets(govs, datein, dateout):
 	to_df = []
 	for x in range(len(govs)):
-		to_df += tw.get_tweets(govs.iloc[x]["Handle"], govs.iloc[x]["Name"], datein, dateout, govs.iloc[x]["Abb"])
+		time.sleep(3)
+		print(x)	
+		f = tw.get_tweets(govs.iloc[x]["Handle"], govs.iloc[x]["Name"], datein, dateout, govs.iloc[x]["Abb"])
+		to_df += f
+		if (len(f) == 1):
+			f = f[0]
+			f = pd.DataFrame(f).T
+		if (len(f)==0):
+			f = [govs.iloc[x]["Name"], govs.iloc[x]["Abb"], 0, 0, 0, "Neutral"]
+			f = pd.DataFrame(f).T
+		else:
+			f = pd.DataFrame(f)
+		f.columns = ["Name", "State Abb", "Tweet", "Date Tweeted", "Sentiment Score", "Overall Sentiment"]
+		f.to_excel("data_folder/"+govs.iloc[x]["Abb"]+".xlsx", index=False)
 	metrics = pd.DataFrame(to_df, columns = ["Name", "State Abb", "Tweet", "Date Tweeted", "Sentiment Score", "Overall Sentiment"])
-	#plot_in_map(metrics)
+	metrics.to_excel("data_folder/test_tweets.xlsx", index=False)
+	plot_in_map(metrics)
 	plot_scatter(metrics)
 
 def get_govs(datein, dateout, state = ""):
-	govs_username = pd.read_csv("governors.csv")
+	govs_username = pd.read_csv("data_folder/governors.csv")
 	get_tweets(govs_username, datein, dateout)
 
 
@@ -96,11 +115,12 @@ def start():
 
 	#Start State Search
 	def strt_search():
-		if ((ent_initial_date.get() < ent_final_date.get()) or (ent_final_date.get() > date.today().strftime('%y%m%d'))):
+
+		if ((int(ent_initial_date.get()) > int(ent_final_date.get()))):
 			messagebox.showerror("Date error", "The selected date is invalid please type or select another date")
 		elif ((ent_initial_date.get() =="") or (ent_final_date.get() =="")):
 			messagebox.showerror("Date error", "The selected date is invalid please type or select another date")
-		get_govs(ent_initial_date.get(), ent_final_date.get())
+		get_govs(int(ent_initial_date.get()), int(ent_final_date.get()))
 	lbl_initial = tk.Label(root, text="Enter initial date").grid(row=0, column = 0)
 	ent_initial_date = tk.Entry(root, validate = "focusin", validatecommand = start_date)
 	ent_initial_date.grid(column = 1, row = 0)
@@ -113,6 +133,8 @@ def start():
 	bt_final_date.grid(column =2, row=1)
 	btn_strt_src = tk.Button(root, text="Search", command=strt_search)
 	btn_strt_src.grid(column =0, row=2, columnspan=3, sticky = tk.W+tk.E)
+	btn_strt_src = tk.Button(root, text="Test", command=plot_from_test)
+	btn_strt_src.grid(column =0, row=3, columnspan=3, sticky = tk.W+tk.E)
 	s = ttk.Style(root)
 	s.theme_use('clam')
 	root.mainloop()
