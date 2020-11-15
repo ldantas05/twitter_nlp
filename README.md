@@ -2,7 +2,9 @@
 Captures tweets from governors of all the US states and shows sentiment towards the Covid Pandemic during the selected time, displays average sentiment during that time in map as well as average sentiment each day on a lineplot.
 
 # required installs
-pip install pandas plotly char_studio numpy matplotlib tkcalendar requests TwitterAPI xlrd openpyxl
+pip install pandas plotly chart_studio numpy matplotlib tkcalendar requests TwitterAPI xlrd openpyxl
+
+tkinter is a library included in python so no need to install it
 
 # required licences
 need google cloud sdk key named "key" in the main folder as well as twitter API premium sandbox bearer key and app environment name (either 30 day or full_archive)
