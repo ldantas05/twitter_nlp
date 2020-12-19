@@ -28,8 +28,26 @@ python stateanalyzer.py
 ```
 
 Depending on the type of license you might need to adjust the dev field in **credentials.py** to either *"30day"* or *"fullarchive"*, full archive has less pull requests but it grants access to historical data meanwhile 30 is limited to the previous 30 days but you get many more requests. Program might not run to completion since TwitterAPI limits the amount of requests per minute. Graphs are displayed in browser using plotly and are interactive.
+# Flow
 
-#Testing
+tkinter UI
+|
+v
+open governors.csv file 
+|
+v
+TwitterAPI with key words, dates and governors handle 
+|
+v
+Google NLP 
+|
+v
+Write tweets to csv 
+|
+v
+Plotly Map, Plotly Graph (averages using Pandas)
+
+# Testing
 
 For the means of testing a button called *"tester"* has been added to analyze sentiment in October, this would not need API keys or any credentials. Raw data is located in the data_folder, the test button will appear on the GUI of stateanalyzer.py.
 
