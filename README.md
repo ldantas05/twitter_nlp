@@ -40,8 +40,8 @@ For testing each different function of stateanalyzer a different file called *te
 This app should retrieve tweets from governors on all 50 states and plot the average sentiment into a map.
 
 # Example Output from Test
-! (./example_graph.png)
-! (./example_map.png)
+![graph](./example_graph.png)
+![map](./example_map.png)
 
 
 
