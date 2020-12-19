@@ -19,13 +19,17 @@ tkinter is a library included in python so no need to install it
 # required licences
 need google cloud sdk key named "key" in the main folder as well as twitter API premium sandbox bearer key and app environment name (either 30 day or full_archive)
 
-For the program to work replace "credentials_template.py" data with required keys and rename to "credentials.py"
+For the program to work replace *"credentials_template.py"* data with required keys and rename to *"credentials.py"*
 
-Run program by running: python stateanalyzer.py
+Run program by running: 
 
-Depending on the type of license you might need to adjest the dev field in credential to either "30day" or "fullarchive", full archive has less pull requests but it grants access to historical data meanwhile 30 is limited to the previous 30 days but you get many more requests. Program might not run to completion since TwitterAPI limits the amount of requests per minute. Graphs are displayed in browser using plotly and are interactive.
+```
+python stateanalyzer.py
+```
 
-For the means of testing a button called "tester" has been added to analyze sentiment in October, this would not need API keys or any credentials. Raw data is located in the data_folder.
+Depending on the type of license you might need to adjust the dev field in **credentials.py** to either *"30day"* or *"fullarchive"*, full archive has less pull requests but it grants access to historical data meanwhile 30 is limited to the previous 30 days but you get many more requests. Program might not run to completion since TwitterAPI limits the amount of requests per minute. Graphs are displayed in browser using plotly and are interactive.
+
+For the means of testing a button called *"tester"* has been added to analyze sentiment in October, this would not need API keys or any credentials. Raw data is located in the data_folder.
 
 # MVP
 This app should retrieve tweets from governors on all 50 states and plot the average sentiment into a map.
