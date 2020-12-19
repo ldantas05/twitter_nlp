@@ -30,22 +30,22 @@ python stateanalyzer.py
 Depending on the type of license you might need to adjust the dev field in **credentials.py** to either *"30day"* or *"fullarchive"*, full archive has less pull requests but it grants access to historical data meanwhile 30 is limited to the previous 30 days but you get many more requests. Program might not run to completion since TwitterAPI limits the amount of requests per minute. Graphs are displayed in browser using plotly and are interactive.
 # Flow
 
-tkinter UI
+tkinter UI  
 |
 v
-open governors.csv file 
+open governors.csv file   
 |
 v
-TwitterAPI with key words, dates and governors handle 
+TwitterAPI with key words, dates and governors handle   
 |
 v
-Google NLP 
+Google NLP   
 |
 v
-Write tweets to csv 
+Write tweets to csv   
 |
 v
-Plotly Map, Plotly Graph (averages using Pandas)
+Plotly Map, Plotly Graph (averages using Pandas)  
 
 # Testing
 
