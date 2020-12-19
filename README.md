@@ -8,6 +8,14 @@ pip install pandas plotly chart_studio numpy matplotlib tkcalendar requests Twit
 
 tkinter is a library included in python so no need to install it
 
+# User Stories
+* As a sociologist I want to see what is the average sentiment of governors regarding COVID.
+* As a citizen I want to know if the information broadcasted by governors has any emotionally charged language.
+* As a citizen I want to know if my governor is overly possitive or overly negative regarding the pandemic, by checking other governors tweets around the same time.
+* As a researcher I want to know the state of the pandemic in each state and the response of the governors during certain time.
+* As a healthcare professional I want to know how communicative the governor in each state is regarding the state of the pandemic.
+* As a healtchare professional I want to know the governor's sentiment about the pandemic.
+
 # required licences
 need google cloud sdk key named "key" in the main folder as well as twitter API premium sandbox bearer key and app environment name (either 30 day or full_archive)
 
